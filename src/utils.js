@@ -31,7 +31,6 @@ export function changeModuleRequireToLoader(modulesData) {
     forEach(modulesData, (container, moduleName) => {
         forEach(container.submodules, (requireAST, submoduleName) => {
             replaceAST(requireAST, createLuaModuleLoaderAST(submoduleName).expression);
-            // console.log(requireAST)
         });
     });
 }
@@ -52,7 +51,7 @@ export function numberToAlphabet(n) {
 
 export function createLuaModuleLoaderAST(moduleName) {
     return lua.parse(`
-        __lc_load_module("${moduleName}")
+        __lc_module("${moduleName}")
     `).body[0];
 }
 

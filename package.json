@@ -1,12 +1,17 @@
 {
     "name": "lua-cruncher",
     "description": "Concatenates lua",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dandevs/lua-cruncher.git"
+    },
     "authors": "Dan",
     "version": "0.0.1",
     "dependencies": {
         "app-root-dir": "^1.0.2",
         "babel-runtime": "^6.23.0",
-        "fs-extra": "^3.0.1",
+        "chokidar": "^1.7.0",
+        "commander": "^2.11.0",
         "lodash": "^4.17.4",
         "luamin": "^1.0.4",
         "luaparse": "^0.2.1"
@@ -21,12 +26,17 @@
         "concurrently": "^3.5.0",
         "cross-env": "^5.0.1",
         "mocha": "^3.4.2",
+        "rimraf": "^2.6.1",
         "source-map-support": "^0.4.15"
     },
     "scripts": {
-        "build": "babel src --out-dir bin",
+        "build": "babel src --out-dir bin --source-maps",
         "start": "concurrently -r \"babel src --out-dir bin -w --source-maps inline\" \"cross-env NODE_ENV=development nodemon npm_scripts/dev.js\"",
         "postinstall": "npm run build",
-        "test": "mocha -w bin test/test.js --reporter min --compilers js:babel-core/register"
-    }
+        "prepublish": "rimraf ./bin && npm run build"
+    },
+    "bin": {
+        "lua-cruncher": "./lua-crunch.js"
+    },
+    "license": "ISC"
 }

@@ -6,9 +6,8 @@
         "url": "https://github.com/dandevs/lua-cruncher.git"
     },
     "authors": "Dan",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "dependencies": {
-        "app-root-dir": "^1.0.2",
         "babel-runtime": "^6.23.0",
         "chokidar": "^1.7.0",
         "commander": "^2.11.0",
@@ -32,8 +31,7 @@
     "scripts": {
         "build": "babel src --out-dir bin --source-maps",
         "start": "concurrently -r \"babel src --out-dir bin -w --source-maps inline\" \"cross-env NODE_ENV=development nodemon npm_scripts/dev.js\"",
-        "postinstall": "npm run build",
-        "prepublish": "rimraf ./bin && npm run build"
+        "prepare": "rimraf ./bin && npm run build"
     },
     "bin": {
         "lua-cruncher": "./lua-crunch.js"

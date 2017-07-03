@@ -8,7 +8,7 @@ const chokidar      = require("chokidar");
 program
     .arguments("<file> [output]")
     .option("-w, --watch [folder]", "Watch and recompile on change")
-    .option("-o, --out <file>")
+    .option("-o, --out <file>", "Output file path")
     .action(processFile)
     .parse(process.argv);
 

@@ -14,7 +14,6 @@ program
 // --------------------------------------------------------
 
 function processFile(file, output = getOutputDefault(file)) {
-
     if (program.watch)
         startWatchProcess(program.watch, file, output);
     else

@@ -32,15 +32,19 @@ function minifyFile(filePath, outputPath) {
 }
 
 function startWatchProcess(folder, filePath, outputPath) {
-    if (typeof folder === "boolean")
-        folder = "./";
+    if (typeof folder === "boolean" || folder == "./") 
+        folder = ".";
 
-    const watcher = chokidar.watch(path.resolve(folder), {
-        ignored: path.resolve(outputPath)
+    const watcher = chokidar.watch(folder, {
+        ignored: outputPath,
+        depth: 99,
     });
 
-    watcher.on("change", compile);
-    watcher.on("add", compile);
+    watcher.on("ready", () => {
+        watcher.on("change", compile);
+        watcher.on("add", compile);
+    });
+
     compile();
 
     // --------------------------------------------------------

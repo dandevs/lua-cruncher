@@ -1,12 +1,13 @@
 {
     "name": "lua-cruncher",
     "description": "Concatenates lua",
+    "main": "bin/index.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/dandevs/lua-cruncher.git"
     },
     "authors": "Dan",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "dependencies": {
         "babel-runtime": "^6.23.0",
         "chokidar": "^1.7.0",
